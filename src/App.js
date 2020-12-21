@@ -57,7 +57,7 @@ function App() {
 	};
 
 	return (
-		<div className="container bg-light">
+		<div className="container bg-light pb-5">
 			<div className="row">
 				<div className="col-md-8 offset-md-2">
 					<h1 className="text-success text-center pt-5">
@@ -113,7 +113,7 @@ function App() {
 							></textarea>
 						</div>
 						<button
-							className="btn btn-success btn-block pb-5"
+							className="btn btn-success btn-block"
 							onClick={sendMessage}
 						>
 							Send Message
