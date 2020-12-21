@@ -13,7 +13,7 @@ function App() {
 			setShowSuccessMessage(false);
 			setShowErrorMessage(false);
 		}, 3000);
-	}, [showSuccessMessage]);
+	}, [showSuccessMessage, showErrorMessage]);
 
 	const handleInputChange = (e) => {
 		setUserData((prevState) => {
@@ -50,6 +50,7 @@ function App() {
 				})
 				.catch((err) => {
 					console.log(err);
+					setUserData({ ...userData, to: "", message: "" });
 					setShowErrorMessage(true);
 				});
 		}
@@ -112,7 +113,7 @@ function App() {
 							></textarea>
 						</div>
 						<button
-							className="btn btn-success btn-block"
+							className="btn btn-success btn-block pb-5"
 							onClick={sendMessage}
 						>
 							Send Message
