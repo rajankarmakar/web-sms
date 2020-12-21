@@ -6,10 +6,12 @@ import "./App.css";
 function App() {
 	const [userData, setUserData] = useState({ to: "", message: "" });
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+	const [showErrorMessage, setShowErrorMessage] = useState(false);
 
 	useEffect(() => {
 		setTimeout(() => {
 			setShowSuccessMessage(false);
+			setShowErrorMessage(false);
 		}, 3000);
 	}, [showSuccessMessage]);
 
@@ -46,7 +48,10 @@ function App() {
 					setUserData({ ...userData, to: "", message: "" });
 					setShowSuccessMessage(true);
 				})
-				.catch((err) => console.log(err));
+				.catch((err) => {
+					console.log(err);
+					setShowErrorMessage(true);
+				});
 		}
 	};
 
@@ -58,6 +63,12 @@ function App() {
 						Web Messaging APP
 					</h1>
 					<hr />
+
+					{showErrorMessage && (
+						<div className="alert alert-danger py-3" role="alert">
+							Oops!! Something went wrong. Sorry Messang not sent!
+						</div>
+					)}
 
 					{showSuccessMessage && (
 						<div className="alert alert-success py-3" role="alert">
